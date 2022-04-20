@@ -131,3 +131,5 @@ dist
 
 # code coverage
 coverage
+
+node_modules*
