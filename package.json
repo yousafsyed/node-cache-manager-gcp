@@ -1,0 +1,20 @@
+{
+  "name": "cache-manager-gcp",
+  "version": "1.0.0",
+  "description": "GCP cloud storage store for node-cache-manager",
+  "main": "src/GcpStore.js",
+  "scripts": {
+    "test": "NODE_ENV=test jest --config ./jest.config.js --collectCoverage --coverageDirectory=\"./coverage\" --ci --reporters=default --reporters=jest-junit --watchAll=false"
+  },
+  "author": "Yousaf Syed <yousaf@bmail.pk>",
+  "license": "MIT-0",
+  "keywords": [
+    "cache",
+    "mongoose",
+    "cache manager"
+  ],
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "jest-junit": "^13.1.0"
+  }
+}
