@@ -1,6 +1,6 @@
 {
   "name": "cache-manager-gcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GCP cloud storage store for node-cache-manager",
   "main": "src/GcpStore.js",
   "scripts": {
@@ -10,9 +10,13 @@
   "license": "MIT-0",
   "keywords": [
     "cache",
-    "mongoose",
+    "google cloud storage",
+    "gcp",
+    "redis",
+    "ioredis",
     "cache manager"
   ],
+  "homepage": "https://github.com/yousafsyed/node-cache-manager-gcp",
   "devDependencies": {
     "jest": "^27.5.1",
     "jest-junit": "^13.1.0"
