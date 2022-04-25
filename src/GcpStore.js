@@ -27,8 +27,20 @@ class GcpStore {
     if (await this.isExpired(key)) {
       return await this.del(key);
     }
-    const data = await this.bucket.file(this.makefilePathByKey(key)).download();
-    return JSON.parse(data.toString());
+
+    try {
+      const data = await this.bucket
+        .file(this.makefilePathByKey(key))
+        .download();
+      return JSON.parse(data.toString());
+    } catch (e) {
+      if (e.code === 404) {
+        console.warn(e);
+        return null;
+      } else {
+        throw e;
+      }
+    }
   }
   async set(key, val) {
     await this.saveTTLForKeyToRedis(key);

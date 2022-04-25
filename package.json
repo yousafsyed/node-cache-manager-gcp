@@ -1,6 +1,6 @@
 {
   "name": "cache-manager-gcp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "GCP cloud storage store for node-cache-manager",
   "main": "src/GcpStore.js",
   "scripts": {

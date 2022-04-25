@@ -92,6 +92,45 @@ describe('Test GCPStore', () => {
     await gcpStoreInstance.keys();
     expect(redis.keys).toHaveBeenCalledTimes(1);
   });
+  it('If key in redis is not expired yet but data is not present in bucket should return null', async () => {
+    const redis = mockRedis();
+    const { bucket, bucketFileResponse } = mockBucket();
+    bucketFileResponse.download = jest.fn().mockImplementation(() => Promise.reject({code:404}))
+
+    const gcpStoreInstance = create({
+      path: 'path',
+      ttl: 60,
+      redisClient: redis,
+      bucket: bucket,
+    });
+    const result = await gcpStoreInstance.get('test');
+    expect(result).toBe(null);
+    expect(redis.ttl).toHaveBeenCalledTimes(1);
+    expect(bucket.file).toHaveBeenCalledTimes(1);
+    expect(bucketFileResponse.download).toHaveBeenCalledTimes(1);
+  });
+
+  it('If key in redis is not expired yet but there is an unknown error should throw that error', async () => {
+    const redis = mockRedis();
+    const { bucket, bucketFileResponse } = mockBucket();
+    bucketFileResponse.download = jest.fn().mockImplementation(() => Promise.reject({code:400}))
+
+    const gcpStoreInstance = create({
+      path: 'path',
+      ttl: 60,
+      redisClient: redis,
+      bucket: bucket,
+    });
+    try{
+      await gcpStoreInstance.get('test');
+    }catch(e){
+      expect(redis.ttl).toHaveBeenCalledTimes(1);
+      expect(bucket.file).toHaveBeenCalledTimes(1);
+      expect(bucketFileResponse.download).toHaveBeenCalledTimes(1);
+    }
+    
+
+  });
 });
 
 function mockBucket() {

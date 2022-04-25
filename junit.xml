@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="0" errors="0" time="0.257">
-  <testsuite name="Test GCPStore" errors="0" failures="0" skipped="0" timestamp="2022-04-20T11:14:00" time="0.138" tests="5">
+<testsuites name="jest tests" tests="7" failures="0" errors="0" time="0.407">
+  <testsuite name="Test GCPStore" errors="0" failures="0" skipped="0" timestamp="2022-04-25T10:07:11" time="0.261" tests="7">
     <testcase classname="Test GCPStore Given correct params should be able to create GCPStore Instance" name="Test GCPStore Given correct params should be able to create GCPStore Instance" time="0.002">
     </testcase>
     <testcase classname="Test GCPStore Given a key should create key in redis and gcp storage" name="Test GCPStore Given a key should create key in redis and gcp storage" time="0">
@@ -9,7 +9,11 @@
     </testcase>
     <testcase classname="Test GCPStore Given a key should delete data for the key if its expired in redis" name="Test GCPStore Given a key should delete data for the key if its expired in redis" time="0.002">
     </testcase>
-    <testcase classname="Test GCPStore If keys function is called should return all the keys" name="Test GCPStore If keys function is called should return all the keys" time="0">
+    <testcase classname="Test GCPStore If keys function is called should return all the keys" name="Test GCPStore If keys function is called should return all the keys" time="0.001">
+    </testcase>
+    <testcase classname="Test GCPStore If key in redis is not expired yet but data is not present in bucket should return null" name="Test GCPStore If key in redis is not expired yet but data is not present in bucket should return null" time="0.033">
+    </testcase>
+    <testcase classname="Test GCPStore If key in redis is not expired yet but there is an unknown error should throw that error" name="Test GCPStore If key in redis is not expired yet but there is an unknown error should throw that error" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>
